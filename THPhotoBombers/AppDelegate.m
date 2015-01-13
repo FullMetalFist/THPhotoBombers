@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "CollectionViewController.h"
 
+#import <SimpleAuth/SimpleAuth.h>
+#import "Constants.h"
+
 @interface AppDelegate ()
 
 @end
@@ -18,6 +21,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    SimpleAuth.configuration[@"instagram"] = @{
+                                               @"client_id" : INSTA_GRAM_API_ID,
+                                               SimpleAuthRedirectURIKey : @"photobombers://auth/instagram"
+                                               };
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     CollectionViewController *collectionViewController = [[CollectionViewController alloc] init];
