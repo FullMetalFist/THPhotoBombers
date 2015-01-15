@@ -8,6 +8,7 @@
 
 #import "CollectionViewController.h"
 #import "CollectionViewCell.h"
+#import "DetailViewController.h"
 
 #import <SimpleAuth/SimpleAuth.h>
 
@@ -85,6 +86,15 @@
     cell.backgroundColor = [UIColor lightGrayColor];
     cell.photo = self.photos[indexPath.row];
     return cell;
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *photo = self.photos[indexPath.row];
+    DetailViewController *viewController = [[DetailViewController alloc] init];
+    viewController.photo = photo;
+    
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 @end
